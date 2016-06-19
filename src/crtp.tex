@@ -1,0 +1,93 @@
+\begin{frame}[fragile]{Run Time Polymorphism}
+    \begin{columns}[T]
+        \begin{column}[T]{5cm}
+            \inputminted[mathescape,
+                linenos,
+                numbersep=5pt,
+                frame=lines,
+                bgcolor=White,
+                fontsize=\tiny,
+                linenos,
+                framesep=2mm]{c++}
+                {/home/elf/PersonalProjects/MetaTalk/src/code/run_complex_pol_mine_1.cpp} 
+        \end{column}
+
+        \begin{column}[T]{5cm}    
+            \inputminted[mathescape,
+                       linenos,
+                       numbersep=5pt,
+                       frame=lines,
+                       bgcolor=White,
+                       fontsize=\tiny,
+                       linenos,
+                       framesep=2mm]{c++}
+                       {/home/elf/PersonalProjects/MetaTalk/src/code/run_complex_pol_mine_2.cpp} 
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Run Time Polymorphism}
+    \begin{center}
+        \begin{tikzpicture}[]
+            \node[] at (0mm,0mm){
+                \includegraphics[height=60mm]{/home/elf/PersonalProjects/MetaTalk/figures/runcrtpclass.png}\hspace{5mm}
+            };
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Run Time Polymorphism}
+    \begin{center}
+        \begin{tikzpicture}[]
+            \node[] at (0mm,0mm){
+                \includegraphics[height=40mm]{/home/elf/PersonalProjects/MetaTalk/figures/run_addOne.png}\hspace{5mm}
+            };
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+
+\begin{frame}[Generate]{Erasing virtual methods, CRTP} 
+    \begin{itemize}
+        \item Curiously Recurring Template Pattern\cite{eli}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Compile Time Polymorphism}
+    \begin{columns}[T]
+        \begin{column}[T]{5cm}
+            \inputminted[mathescape,
+                       linenos,
+                       numbersep=5pt,
+                       frame=lines,
+                       bgcolor=White,
+                       fontsize=\tiny,
+                       linenos,
+                       framesep=2mm]{c++}
+                       {/home/elf/PersonalProjects/MetaTalk/src/code/comp_complex_pol_mine_1.cpp} 
+        \end{column}
+        \begin{column}[T]{5cm}
+            \inputminted[mathescape,
+                   linenos,
+                   numbersep=5pt,
+                   frame=lines,
+                   bgcolor=White,
+                   fontsize=\tiny,
+                   linenos,
+                   framesep=2mm]{c++}
+                   {/home/elf/PersonalProjects/MetaTalk/src/code/comp_complex_pol_mine_2.cpp}
+
+            \inputminted[mathescape,
+                       linenos,
+                       numbersep=5pt,
+                       frame=lines,
+                       bgcolor=White,
+                       fontsize=\tiny,
+                       linenos,
+                       framesep=2mm]{c++}
+                       {/home/elf/PersonalProjects/MetaTalk/src/code/comp_complex_pol_mine_3.cpp} 
+        \end{column}
+    \end{columns}
+\end{frame}
+
+

@@ -1,0 +1,37 @@
+\begin{frame}[fragile]{How does it look like in C like C++}
+    \begin{columns}[T]
+        \begin{column}[T]{5cm}
+            \inputminted[mathescape,
+                       linenos,
+                       numbersep=2pt,
+                       frame=lines,
+                       bgcolor=White,
+                       fontsize=\tiny,
+                       linenos,
+                       framesep=1mm]{c++}
+                       {/home/elf/PersonalProjects/MetaTalk/src/code/dd_c1.cpp} 
+        \end{column}
+        \begin{column}[T]{5cm}
+            \inputminted[mathescape,
+                   linenos,
+                   numbersep=2pt,
+                   frame=lines,
+                   bgcolor=White,
+                   fontsize=\tiny,
+                   linenos,
+                   framesep=1mm]{c++}
+                   {/home/elf/PersonalProjects/MetaTalk/src/code/dd_c12.cpp}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{Virtual Tables} 
+    \begin{itemize}
+        \item This virtual table in turn contains the base addresses of one or more virtual functions of the class. At the time when a virtual function is 
+            called on an object, the vptr of that object provides the base address of the virtual table for that class in memory. This table is used to resolve 
+            the function call as it contains the addresses of all the virtual functions of that class. This is how dynamic binding is resolved during a virtual 
+            function call.
+    \end{itemize}
+\end{frame}
+

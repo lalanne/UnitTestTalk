@@ -1,0 +1,181 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{extramath}[2008/03/28 Alin's Useful Math Commands]
+%
+% This package provides many useful mathemtical-related commands for
+% use in articles, essays, writeups, etc. Please feel free to use it,
+% or adapt it to you own needs. The comments below should explain
+% roughly what the various bits do.
+%
+\ProcessOptions\relax %relax prevents look-ahead due to * form
+%
+\DeclareRobustCommand{\parent}[1]{\ensuremath{\!\left({#1}\right)\!}}
+\DeclareRobustCommand{\parente}[1]{\ensuremath{\left({#1}\right)}}
+\DeclareRobustCommand{\braces}[1]{\ensuremath{\!\left\{{#1}\right\}}}
+\DeclareRobustCommand{\angles}[1]{\ensuremath{\left<{#1}\right>}}
+\DeclareRobustCommand{\sqbracs}[1]{\ensuremath{\left[{#1}\right]}}
+\DeclareRobustCommand{\mods}[1]{\ensuremath{\left\lvert{#1}\right\rvert}}
+\DeclareRobustCommand{\modsq}[1]{\ensuremath{\mods{#1}^2}}
+\DeclareRobustCommand{\dblmods}[1]{\ensuremath{\left\lVert{#1}\right\rVert}}
+\DeclareRobustCommand{\expOf}[1]{\ensuremath{\exp{\!\parent{#1}}}}
+\DeclareRobustCommand{\eexp}[1]{\ensuremath{e^{#1}}}
+\DeclareRobustCommand{\efrac}[2]{\ensuremath{\frac{#1}{\vphantom{\Pi^a}#2}}}
+\DeclareRobustCommand{\plusquad}{\ensuremath{\oplus}}
+\DeclareRobustCommand{\logOf}[1]{\ensuremath{\log\!\parent{#1}}}
+\DeclareRobustCommand{\lnOf}[1]{\ensuremath{ln\!\,{#1}}}
+\DeclareRobustCommand{\ofOrder}[1]{\ensuremath{\mathcal{O}\parent{#1} }}
+
+% \DeclareRobustCommand{\jref}[1]{{\textbf{\ref{#1}}}}
+% \DeclareRobustCommand{\gref}[1]{{\textbf{(\ref{#1})}}}
+% \DeclareRobustCommand{\eref}[1]{{\textbf{Eq (\ref{#1})}}}
+% \DeclareRobustCommand{\fref}[1]{{\textbf{Fig \ref{#1}}}}
+% \DeclareRobustCommand{\tref}[1]{{\textbf{Table \ref{#1}}}}
+% \DeclareRobustCommand{\sref}[1]{{\textbf{Section \ref{#1}}}}
+% \DeclareRobustCommand{\aref}[1]{{\textbf{Algorithm \ref{#1}}}}
+% \DeclareRobustCommand{\appref}[1]{{\textbf{Appendix \ref{#1}}}}
+% \DeclareRobustCommand{\rref}[1]{\textbf{Ref} \citep{#1}}
+
+\DeclareRobustCommand{\jref}[1]{\ref{#1}}
+\DeclareRobustCommand{\gref}[1]{(\jref{#1})}
+\DeclareRobustCommand{\eref}[1]{eq. (\jref{#1})}
+\DeclareRobustCommand{\fref}[1]{fig. \jref{#1}}
+\DeclareRobustCommand{\tref}[1]{table \jref{#1}}
+\DeclareRobustCommand{\sref}[1]{section \jref{#1}}
+\DeclareRobustCommand{\cref}[1]{chapter \jref{#1}}
+\DeclareRobustCommand{\aref}[1]{algorithm \jref{#1}}
+\DeclareRobustCommand{\appref}[1]{appendix \jref{#1}}
+\DeclareRobustCommand{\rref}[1]{ref. \citep{#1}}
+
+\DeclareRobustCommand{\td}{\ensuremath{\text{d}}}
+\DeclareRobustCommand{\d}[1]{\ensuremath{\,\text{d}{#1}}}
+
+\DeclareRobustCommand{\dd}[1]{\ensuremath{\,\text{d}{#1}}}
+\DeclareRobustCommand{\bdd}[1]{\ensuremath{\,\text{d}\mathbf{#1}}}
+
+\DeclareRobustCommand{\fd}[1]{\ensuremath{\text{d}{#1}}}
+\DeclareRobustCommand{\bfd}[1]{\ensuremath{\text{d}\mathbf{#1}}}
+
+\DeclareRobustCommand{\fbdn}[2]{\ensuremath{\text{d}^{#1}\mathbf{#2}}}
+\DeclareRobustCommand{\bdn}[2]{\ensuremath{\,\text{d}^{#1}\mathbf{#2}}}
+
+\DeclareRobustCommand{\bxi}{\ensuremath{\boldsymbol\xi}}
+\DeclareRobustCommand{\poi}[1]{\left\{#1\right\}}
+% derivatives
+\DeclareRobustCommand{\de}[2]{\ensuremath{\cfrac{\text{d} #1}{\text{d}#2}}}
+\DeclareRobustCommand{\dde}[2]{\ensuremath{\frac{\text{d}^2 #1}{\text{d} #2 ^2}}}
+% partial derivatives
+\DeclareRobustCommand{\p}[2]{\cfrac{\partial #1}{\partial #2}}
+\DeclareRobustCommand{\pp}[2]{\cfrac{\partial^{2} #1}{\partial #2^{2}}}
+\DeclareRobustCommand{\ppp}[3]{\cfrac{\partial^{2} #1}{\partial #2 \partial #3}}
+% variational derivatives
+\DeclareRobustCommand{\vd}[2]{\frac{\delta #1}{\delta #2}}
+\DeclareRobustCommand{\vdd}[3]{\frac{\delta^{2} #1}{\delta #2 \delta #3}}
+\DeclareRobustCommand{\tjm}[6]{\left( \begin{array}{ccc}
+ #1 & #3 & #5 \\
+ #2 & #4 & #6 \\
+\end{array} \right)}
+\DeclareRobustCommand{\mc}[1]{\mathcal{#1}}
+\DeclareRobustCommand{\bm}[1]{{\bf #1}}
+\DeclareRobustCommand{\tm}[1]{{\textrm{#1}}}
+\DeclareRobustCommand{\Commutator}[2]{\left[{#1},{#2}\right]}
+\DeclareRobustCommand{\intt}{\text{in}}
+\DeclareRobustCommand{\out}{\text{out}}
+
+\DeclareRobustCommand{\versor}[1]{{\ver{\bm{e}}_{#1}}}
+%% General utility defns
+\DeclareRobustCommand{\arXivCode}[1]{arXiv:#1}
+
+\DeclareRobustCommand{\Lagrangian}{\ensuremath{ \mathcal{L}\, }}
+\DeclareRobustCommand{\Hamiltonian}{\ensuremath{\mathcal{H}}}
+\DeclareRobustCommand{\lagrangian}{\Lagrangian}
+\DeclareRobustCommand{\hamiltonian}{\Hamiltonian}
+\DeclareRobustCommand{\Trace}{\ensuremath{\textbf{{Tr}\,}}}
+\DeclareRobustCommand{\trace}{\Trace}
+\DeclareRobustCommand{\be}{\begin{equation}}
+\DeclareRobustCommand{\ben}{\begin{equation*}}
+\DeclareRobustCommand{\ee}{\end{equation}}
+\DeclareRobustCommand{\een}{\end{equation*}}
+\DeclareRobustCommand{\eV}{\ensuremath{\electronvolt}}
+
+\DeclareRobustCommand{\lhs}{l.h.s.}
+\DeclareRobustCommand{\rhs}{r.h.s.}
+
+%chemistry part
+\DeclareRobustCommand{\OH}{\ensuremath{\textrm{OH}}}
+\DeclareRobustCommand{\sst}{\ensuremath{\symbol{"2296}}}
+\DeclareRobustCommand{\sste}{\ensuremath{\symbol{"2296}}}
+
+\DeclareRobustCommand{\avo}{\ensuremath{\mathcal{N}_A}}
+\DeclareRobustCommand{\aqua}{\ensuremath{\textrm{H}_2\textrm{O}}}
+\DeclareRobustCommand{\AH}{\ensuremath{\textrm {AH}}}
+\DeclareRobustCommand{\hyd}{\ensuremath{\textrm {H}^+}}
+\DeclareRobustCommand{\nion}{\ensuremath{\textrm {A}^-}}
+\DeclareRobustCommand{\hf}{\ensuremath{\textrm {HF}}}
+\DeclareRobustCommand{\fh}{\ensuremath{\textrm {FH}}}
+\DeclareRobustCommand{\fm}{\ensuremath{\textrm {F}^-}}
+\DeclareRobustCommand{\hydronium}{\ensuremath{\textrm {[H}_3\textrm {O]}^+}}
+\DeclareRobustCommand{\zundel}{\ensuremath{\textrm {[H}_5\textrm {O}_2]^+}}
+\DeclareRobustCommand{\eigen}{\ensuremath{\textrm {[H}_9\textrm {O}_4]^+}}
+\DeclareRobustCommand{\cluster}{\ensuremath{\textrm{HF}\left(\textrm{H}_\textrm{2}\textrm{O}\right)_\textrm{7}}}
+\DeclareRobustCommand{\clusterbf}{\ensuremath{\mathbf{\left(H_2O\right)_7HF}}}
+\DeclareRobustCommand{\uC}{\ensuremath{\:^{\circ}\mathrm{C}}}
+\DeclareRobustCommand{\hcl}{\ensuremath{\textrm{HCl}}}
+\DeclareRobustCommand{\dcl}{\ensuremath{\textrm{DCl}}}
+\DeclareRobustCommand{\doo}{\ensuremath{\left(\!\textrm{D}_\textrm{2}\textrm{O}\!\right)_\textrm{2}}}
+\DeclareRobustCommand{\hoo}{\ensuremath{\left(\!\textrm{H}_\textrm{2}\textrm{O}\!\right)_\textrm{2}}}
+\DeclareRobustCommand{\hon}{\ensuremath{\left(\!\textrm{H}_\textrm{2}\textrm{O}\!\right)_\textrm{n}}}
+\DeclareRobustCommand{\hof}{\ensuremath{\left(\!\textrm{H}_\textrm{2}\textrm{O}\!\right)_\textrm{4}}}
+\DeclareRobustCommand{\hos}{\ensuremath{\left(\!\textrm{H}_\textrm{2}\textrm{O}\!\right)_\textrm{6}}}
+\DeclareRobustCommand{\hho}{\ensuremath{\textrm{H}_\textrm{2}\textrm{O}}}
+\DeclareRobustCommand{\ddo}{\ensuremath{\textrm{D}_\textrm{2}\textrm{O}}}
+\DeclareRobustCommand{\hbr}{\ensuremath{\textrm{HBr}}}
+\DeclareRobustCommand{\hI}{\ensuremath{\textrm{Hl}}}
+\DeclareRobustCommand{\acetic}{\ensuremath{\mathrm {CH_3COOH}}}
+\DeclareRobustCommand{\formic}{\ensuremath{\textrm {HCOOH}}}
+\DeclareRobustCommand{\et}{\emph{et al. }}
+
+\DeclareRobustCommand{\ZC}{\ensuremath{\mathcal{Z}}}
+\DeclareRobustCommand{\QC}{\ensuremath{\mathcal{Q}}}
+\DeclareRobustCommand{\JC}{\ensuremath{\mathcal{J}}}
+\DeclareRobustCommand{\IC}{\ensuremath{\mathcal{I}}}
+\DeclareRobustCommand{\FC}{\ensuremath{\mathcal{F}}}
+\DeclareRobustCommand{\OC}{\ensuremath{\mathcal{O}}}
+\DeclareRobustCommand{\lb}{\hbox{\lparenuend\kern-0.56em\lparenlend\kern+0.56em}}
+\DeclareRobustCommand{\PC}{\ensuremath{\mathcal{P}}}
+\DeclareRobustCommand{\ii}{\ensuremath{\mathbf{i}}}
+\DeclareRobustCommand{\eg}{\ensuremath{e.g.,\;}}
+\DeclareRobustCommand{\vs}{\emph{vs}~}
+\DeclareRobustCommand{\via}{\emph{via}~}
+
+\DeclareRobustCommand{\id}{{\normalfont\hbox{1\kern-0.22em \vrule width .4pt 
+depth-.0pt\kern+0.22em}}}
+\DeclareRobustCommand{\Real}{{\normalfont\hbox{R\kern-0.56em \vrule width .4pt 
+depth-.0pt\kern+0.56em}}}
+\DeclareRobustCommand{\EE}{{\normalfont\hbox{E\kern-0.56em \vrule width .4pt 
+depth-.0pt\kern+0.56em}}}
+
+%------------------------------------------------------------------------
+% Reduce space around central operator in the eqnarray environment,
+% using code from the jfm.cls package.
+
+\renewenvironment{eqnarray}
+  {\stepcounter{equation}%
+   \let\@currentlabel=\theequation
+   \global\@eqnswtrue
+   \m@th
+   \global\@eqcnt\z@
+   \tabskip\@centering
+   \let\\\@eqncr
+   $$\everycr{}\halign to \displaywidth\bgroup
+     \hskip\@centering$\displaystyle\tabskip\z@skip{##}$\@eqnsel
+   &\global\@eqcnt\@ne \hfil${\;##\;}$\hfil
+   &\global\@eqcnt\tw@
+     $\displaystyle\tabskip\z@skip{##}$\hfil \tabskip\@centering
+   &\hb@xt@\z@\bgroup\hss##\egroup
+     \tabskip\z@skip \cr}
+  {\@@eqncr\egroup\global\advance\c@equation\m@ne
+   $$\global\@ignoretrue}
+
+
+\endinput
+
+

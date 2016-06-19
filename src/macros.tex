@@ -1,0 +1,168 @@
+\begin{frame}{Textual Macro Languages}
+    \begin{itemize}
+        \item Textual Macros are macros that directly affect the text of the 
+            programming language without knowing about or dealing with the 
+            meaning of the language \emph{e.g.} C preprocessor\cite{macrosibm}. 
+
+        \vspace{5mm}
+
+        \item Allow you to write small Domain Specific Languages(DSLs).
+
+        \vspace{5mm}
+
+        \item Some times these small DSLs are easier to write and maintain than
+            the same construction in the target language.
+
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{C/C++ \emph{\#define} Macro}
+    \begin{itemize}\addtolength{\itemsep}{1\baselineskip}
+        \item Before compilation macros are expanded(text).
+
+        \item Basic way to do basic metaprogramming.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{C preprocessor SWAP}
+    \begin{center}
+        \begin{tikzpicture}[]
+            \node[] at (0mm,0mm){
+                \includegraphics[height=60mm]{/home/elf/PersonalProjects/MetaTalk/figures/swap.png}\hspace{5mm}
+            };
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+\begin{frame}{C preprocessor SWAP}
+    \begin{center}
+        \begin{tikzpicture}[]
+            \node[] at (0mm,0mm){
+                \includegraphics[height=60mm]{/home/elf/PersonalProjects/MetaTalk/figures/swap1.png}\hspace{5mm}
+            };
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+\begin{frame}{C preprocessor SWAP expanded}
+    \begin{center}
+        \begin{tikzpicture}[]
+            \node[] at (0mm,0mm){
+                \includegraphics[height=70mm]{/home/elf/PersonalProjects/MetaTalk/figures/swapexp1.png}\hspace{5mm}
+            };
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+\begin{frame}{C preprocessor SWAP expanded}
+    \begin{center}
+        \begin{tikzpicture}[]
+            \node[] at (0mm,0mm){
+                \includegraphics[height=70mm]{/home/elf/PersonalProjects/MetaTalk/figures/swapexp2.png}\hspace{5mm}
+            };
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+\begin{frame}{C preprocessor SWAP expanded}
+    \begin{center}
+        \begin{tikzpicture}[]
+            \node[] at (0mm,0mm){
+                \includegraphics[height=70mm]{/home/elf/PersonalProjects/MetaTalk/figures/swapexp3.png}\hspace{5mm}
+            };
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{C preprocessor MIN}
+\inputminted[mathescape,
+           linenos,
+           numbersep=5pt,
+           frame=lines,
+           bgcolor=White,
+           fontsize=\scriptsize,
+           linenos,
+           framesep=2mm]{c++}
+           {/home/elf/PersonalProjects/MetaTalk/src/code/macro_min_fail.cpp} 
+\end{frame}
+
+\begin{frame}[fragile]{C preprocessor MIN}
+\inputminted[mathescape,
+   linenos,
+   numbersep=5pt,
+   frame=lines,
+   bgcolor=White,
+   fontsize=\scriptsize,
+   linenos,
+   framesep=2mm]{c++}
+   {/home/elf/PersonalProjects/MetaTalk/src/code/macro_min_fail.cpp} 
+\end{frame}
+
+\begin{frame}[fragile]{C preprocessor MIN}
+\inputminted[mathescape,
+   linenos,
+   numbersep=5pt,
+   frame=lines,
+   bgcolor=White,
+   fontsize=\scriptsize,
+   linenos,
+   framesep=2mm]{c++}
+   {/home/elf/PersonalProjects/MetaTalk/src/code/macro_min_should.cpp} 
+\end{frame}
+
+\begin{frame}[fragile]{C preprocessor MIN}
+\inputminted[mathescape,
+   linenos,
+   numbersep=5pt,
+   frame=lines,
+   bgcolor=White,
+   fontsize=\scriptsize,
+   linenos,
+   framesep=2mm]{c++}
+   {/home/elf/PersonalProjects/MetaTalk/src/code/macro_min_res.cpp} 
+\end{frame}
+
+\begin{frame}[fragile]{C preprocessor MIN}
+\inputminted[mathescape,
+   linenos,
+   numbersep=5pt,
+   frame=lines,
+   bgcolor=White,
+   fontsize=\scriptsize,
+   linenos,
+   framesep=2mm]{c++}
+   {/home/elf/PersonalProjects/MetaTalk/src/code/macro_min_ext.cpp} 
+\end{frame}
+
+\begin{frame}{The MIN case}
+    \begin{itemize}\addtolength{\itemsep}{2\baselineskip}
+        \item Necessary parenthesis (operator precedence), what happen if you 
+            do \emph{MIN(27, b=3)}.
+
+        \item When one of the arguments is a function is going to be call twice. 
+            (performance, duplicated calculation). Worst when the function
+            contains side effects(printing).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Advantages}
+    \begin{itemize}\addtolength{\itemsep}{1\baselineskip}
+        \item Function call too much overhead simple operations.
+
+        
+        \item Avoid writing different functions for different argument types.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Disadvantages}
+    \begin{itemize}\addtolength{\itemsep}{1\baselineskip}
+        \item C/C++ preprocessor allow limited arguments for Macros.
+
+        \item You do not get any type of type safety.
+
+        \item Its get very messy when you combine Macros with expressions.
+
+        \item Size of the program.
+    \end{itemize}
+\end{frame}
+

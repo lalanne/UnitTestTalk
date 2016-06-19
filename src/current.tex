@@ -1,0 +1,205 @@
+\begin{frame}{The plan}
+\begin{enumerate}
+\item OpenMP the most expensive functions
+\item Exploit vectorisation
+\end{enumerate}
+\pause
+Gramidicin case
+\begin{enumerate}
+\item constraints shake
+\item linked list
+\item vdw forces and ewald real forces (two body forces)
+\item the profile may change depending on the physical system studied
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{OpenMP scalability - Gramidicin 99k atoms}
+\begin{tikzpicture}[xshift=5mm,yshift=1mm]
+\tikzstyle{every node}=[font=\tiny]
+\begin{groupplot}[
+    group style={
+        group name=my plots,
+        group size=2 by 2,
+        xlabels at=edge bottom,
+    %    xticklabels at=edge bottom,
+        horizontal sep=3mm, vertical sep=0.5cm,
+    },
+    /tikz/mark size=1.0pt,
+    width=0.5\textwidth,
+    xmin= 1,xmax=20,
+    minor tick num =4,
+    grid=none,
+    legend pos=outer north east,
+    legend cell align=left,
+    legend style={xshift=5mm},
+    every axis label/.append style={font=\footnotesize},
+    x tick label style={scaled x ticks = false,
+        /pgf/number format/fixed,},
+    y tick label style={scaled y ticks = false,
+        /pgf/number format/fixed,},
+]
+\nextgroupplot[ylabel={Time [s]},xmode=log, log basis x=2]
+\addplot +[blue,thick,solid] table[x index=0, y index=  1]  {figures/host1mpi.dat};
+\addplot +[red,thick,solid] table[x index=0, y index=  3]  {figures/host1mpi.dat};
+\addplot +[green,thick,solid] table[x index=0, y index=  5]  {figures/host1mpi.dat};
+\addplot +[pink,thick,solid] table [x index=0, y index=  7] {figures/host1mpi.dat};
+\nextgroupplot[ylabel={},yticklabel pos=right, ylabel near ticks,xmin=1,xmax=240,
+xmode=log, log basis x=2]
+\addplot +[blue,thick,solid] table [x index=0, y index=  1] {figures/mic1mpi.dat};
+\addplot +[red,thick,solid] table [x index=0, y index=  3]{figures/mic1mpi.dat};
+\addplot +[green,thick,solid] table[x index=0, y index=  5] {figures/mic1mpi.dat};
+\addplot +[pink,thick,solid] table[x index=0, y index=  7] {figures/mic1mpi.dat};
+\legend{ time per step,
+constraints ,
+two body forces,
+linked lists,}
+\nextgroupplot[ylabel={Efficiency \%},xlabel={Threads},xmin=1,xmax=20,ymin=0,ymax=1.0,xmode=log,
+log basis x=2]
+\addplot +[blue,thick,solid] table[x index=0, y index=  2]  {figures/host1mpi.dat};
+\addplot +[red,thick,solid] table[x index=0, y index=  4]  {figures/host1mpi.dat};
+\addplot +[green,thick,solid] table[x index=0, y index=  6]  {figures/host1mpi.dat};
+\addplot +[pink,thick,solid] table [x index=0, y index=  8] {figures/host1mpi.dat};
+\nextgroupplot[xlabel={Threads},ylabel={},xmode=log,log basis x=2,
+yticklabel pos=right, ylabel near ticks,xmin=1,xmax=240,ymin=0,ymax=1.0]
+\addplot +[blue,thick,solid] table [x index=0, y index=  2] {figures/mic1mpi.dat};
+\addplot +[red,thick,solid] table [x index=0, y index=  4]{figures/mic1mpi.dat};
+\addplot +[green,thick,solid] table [x index=0, y index=  6] {figures/mic1mpi.dat};
+\addplot +[pink,thick,solid] table [x index=0, y index=  8] {figures/mic1mpi.dat};
+\end{groupplot}
+\node[font=\footnotesize] at (25mm,20mm){Host 1 MPI};
+\node[font=\footnotesize] at (66mm,20mm){Xeon Phi 1 MPI};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[fragile]{MPI+OpenMP implementation - Gramidicin 99k atoms}
+\begin{tikzpicture}[xshift=5mm,yshift=1mm]
+\tikzstyle{every node}=[font=\tiny]
+\begin{groupplot}[
+    group style={
+        group name=my plots,
+        group size=2 by 2,
+        xlabels at=edge bottom,
+    %    xticklabels at=edge bottom,
+        horizontal sep=3mm, vertical sep=0.5cm,
+    },
+    /tikz/mark size=1.0pt,
+    width=0.5\textwidth,
+    xmin= 1,xmax=20,
+    minor tick num =4,ymin=0,ymax=1.0,
+    grid=none,
+    legend pos=outer north east,
+    legend cell align=left,
+    legend style={xshift=5mm},
+    every axis label/.append style={font=\footnotesize},
+    x tick label style={scaled x ticks = false,
+        /pgf/number format/fixed,},
+    y tick label style={scaled y ticks = false,
+        /pgf/number format/fixed,},
+]
+\nextgroupplot[ylabel={Efficiency \%},xmode=log,log basis x=2,]
+\addplot +[blue,thick,solid] table[x index=0, y index=  2]  {figures/h15.dat};
+\addplot +[red,thick,solid] table[x index=0, y index=  4]  {figures/h15.dat};
+\addplot +[green,thick,solid] table[x index=0, y index=  6]  {figures/h15.dat};
+\addplot +[pink,thick,solid] table [x index=0, y index=  8] {figures/h15.dat};
+\nextgroupplot[ylabel={},yticklabel pos=right, ylabel near ticks,xmin=1,xmax=16,
+    xmode=log, log basis x=2,
+]
+\addplot +[blue,thick,solid] table [x index=0, y index=  2] {figures/t15.dat};
+\addplot +[red,thick,solid] table [x index=0, y index=  4]{figures/t15.dat};
+\addplot +[green,thick,solid] table[x index=0, y index=  6] {figures/t15.dat};
+\addplot +[pink,thick,solid] table[x index=0, y index=  8] {figures/t15.dat};
+\legend{ time per step,
+constraints ,
+two body forces,
+linked lists,}
+\nextgroupplot[ylabel={Efficiency \%},xlabel={Threads},xmin=1,xmax=8,
+    xmode=log, log basis x=2,
+]
+\addplot +[blue,thick,solid] table[x index=0, y index=  2]  {figures/t30.dat};
+\addplot +[red,thick,solid] table[x index=0, y index=  4]  {figures/t30.dat};
+\addplot +[green,thick,solid] table[x index=0, y index=  6]  {figures/t30.dat};
+\addplot +[pink,thick,solid] table [x index=0, y index=  8] {figures/t30.dat};
+\nextgroupplot[xlabel={Threads},ylabel={},
+yticklabel pos=right, ylabel near ticks,xmin=1,xmax=4,
+    xmode=log, log basis x=2,
+]
+\addplot +[blue,thick,solid] table [x index=0, y index=  2] {figures/t60.dat};
+\addplot +[red,thick,solid] table [x index=0, y index=  4]{figures/t60.dat};
+\addplot +[green,thick,solid] table [x index=0, y index=  6] {figures/t60.dat};
+\addplot +[pink,thick,solid] table [x index=0, y index=  8] {figures/t60.dat};
+\end{groupplot}
+\node[font=\footnotesize] at (25mm,20mm){Host 1 MPI};
+\node[font=\footnotesize] at (66mm,20mm){Xeon Phi 15 MPI};
+\node[font=\footnotesize] at (25mm,-10mm){Xeon Phi 30 MPI};
+\node[font=\footnotesize] at (65mm,-10mm){Xeon Phi 60 MPI};
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}[fragile]{OpenMP Affinity - Gramidicin 99k atoms (15 MPI)}
+\begin{tikzpicture}[xshift=5mm,yshift=1mm]
+\tikzstyle{every node}=[font=\tiny]
+\begin{groupplot}[
+    group style={
+        group name=my plots,
+        group size=2 by 2,
+        xlabels at=edge bottom,
+    %    xticklabels at=edge bottom,
+        horizontal sep=3mm, vertical sep=0.5cm,
+    },
+    /tikz/mark size=1.0pt,
+    width=0.5\textwidth,
+    xmin= 1,xmax=16,
+    minor tick num =4,ymin=0,ymax=1.0,
+    grid=none,
+    legend pos=outer north east,
+    legend cell align=left,
+    legend style={xshift=5mm},
+    every axis label/.append style={font=\footnotesize},
+    x tick label style={scaled x ticks = false,
+        /pgf/number format/fixed,},
+    y tick label style={scaled y ticks = false,
+        /pgf/number format/fixed,},
+]
+\nextgroupplot[ylabel={Efficiency \%},
+    xmode=log, log basis x=2,
+]
+\addplot +[blue,thick,solid] table[x index=0, y index=  2]  {figures/t15.dat};
+\addplot +[red,thick,solid] table[x index=0, y index=  4]  {figures/t15.dat};
+\addplot +[green,thick,solid] table[x index=0, y index=  6]  {figures/t15.dat};
+\addplot +[pink,thick,solid] table [x index=0, y index=  8] {figures/t15.dat};
+\nextgroupplot[ylabel={},yticklabel pos=right, ylabel near ticks,
+    xmode=log, log basis x=2,
+]
+\addplot +[blue,thick,solid] table [x index=0, y index=  2] {figures/m15tcompact.dat};
+\addplot +[red,thick,solid] table [x index=0, y index=  4]{figures/m15tcompact.dat};
+\addplot +[green,thick,solid] table[x index=0, y index=  6] {figures/m15tcompact.dat};
+\addplot +[pink,thick,solid] table[x index=0, y index=  8] {figures/m15tcompact.dat};
+\legend{ time per step,
+constraints ,
+two body forces,
+linked lists,}
+\nextgroupplot[ylabel={Efficiency \%},xlabel={Threads},
+    xmode=log, log basis x=2,
+]
+\addplot +[blue,thick,solid] table[x index=0, y index=  2]  {figures/m15tscatter.dat};
+\addplot +[red,thick,solid] table[x index=0, y index=  4]  {figures/m15tscatter.dat};
+\addplot +[green,thick,solid] table[x index=0, y index=  6]  {figures/m15tscatter.dat};
+\addplot +[pink,thick,solid] table [x index=0, y index=  8] {figures/m15tscatter.dat};
+\nextgroupplot[xlabel={Threads},ylabel={},
+yticklabel pos=right, ylabel near ticks,
+    xmode=log, log basis x=2,
+]
+\addplot +[blue,thick,solid] table [x index=0, y index=  2] {figures/m15tbalanced.dat};
+\addplot +[red,thick,solid] table [x index=0, y index=  4]{figures/m15tbalanced.dat};
+\addplot +[green,thick,solid] table [x index=0, y index=  6] {figures/m15tbalanced.dat};
+\addplot +[pink,thick,solid] table [x index=0, y index=  8] {figures/m15tbalanced.dat};
+\end{groupplot}
+\node[font=\footnotesize] at (25mm,20mm){no affinity set};
+\node[font=\footnotesize] at (66mm,20mm){compact};
+\node[font=\footnotesize] at (25mm,-10mm){scatter};
+\node[font=\footnotesize] at (65mm,-10mm){balanced};
+\end{tikzpicture}
+\end{frame}
+
+

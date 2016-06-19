@@ -1,0 +1,284 @@
+%\documentclass[hyperref={pdfpagelabels=false}]{beamer}
+%\documentclass[notes=only,xcolor=svgnames,professionalfonts,lualatex]{beamer}
+\documentclass[notes=hide,xcolor=svgnames,professionalfonts,lualatex]{beamer}
+\errorcontextlines 10000 %to have more context in case of an error!!!
+\mode<presentation>
+{
+ \usetheme{Dublin} 
+}
+\usepackage[british]{babel}
+\usepackage{fontspec}
+\usepackage{listings}
+\usepackage{soul}
+\usepackage{tikz}%
+\usetikzlibrary{chains,matrix,positioning,scopes,shapes,shadows,pgfplots.groupplots,decorations.pathmorphing}
+\usetikzlibrary{arrows, decorations.markings,fadings}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepackage{chemarrow}
+%\usepackage[final]{movie15}
+\usepackage{setspace}
+%\usepackage{media9}
+\usepackage{pgfpages}
+\usepackage{minted}
+\uselanguage{BritishEnglish}
+\pgfplotsset{compat=newest}
+\usepackage[absolute,overlay]{textpos}
+
+\AtBeginDocument{
+\fontspec[OpticalSize=15]{New Euler}%
+\setmainfont[ItalicFont={OpenSans Light Italic},BoldFont={OpenSans},
+            BoldItalicFont={OpenSans Italic},Ligatures=TeX]{OpenSans Light}%
+\setsansfont[ItalicFont={OpenSans Light Italic},BoldFont={OpenSans},
+            BoldItalicFont={OpenSans Italic},Ligatures=TeX]{OpenSans Light}%
+\setmonofont[ItalicFont={OpenSans Italic},BoldFont={OpenSans Bold},
+            BoldItalicFont={OpenSans Bold Italic},Ligatures=TeX]{OpenSans}%
+\DeclareMathSizes{12}{12}{9}{7}
+}
+
+%\setbeameroption{show notes on second screen=right}
+\graphicspath{{figures/}}
+%\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{sidebar right}{}% or get rid of navigation entries there somehow from the default position... 
+%\setbeameroption{show notes on second screen}
+\newcommand{\captionfont}{\footnotesize}
+\title[Metaprogramming]
+{Metaprogramming}
+\author[Christian Lalanne \emph{et. al}] % (optional, use only with lots of authors)
+{\textcolor{CherryRed}{Christian Lalanne}}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[ICHEC] % (optional, but mostly nee)
+{
+    %\inst{1}%
+     \emph{Irish Centre for High-End Computing}    
+}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date[October 3, 2014] % (optional, should be abbreviation of conference nam
+{Dublin\ October 3, 2014}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{Meta\-programming}
+% This is only inserted into the PDF information catalogue. Can be left
+% out. 
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+%  \pgfdeclareimage[height=0.88cm]{university-logo}{ucdlogo}
+%   \logo{\pgfuseimage{university-logo}}
+\pgfdeclareimage[height=0.9cm]{group-logo}{figures/ichec}
+\logoM{\pgfuseimage{group-logo}}
+
+
+%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\def\pgf@plot@curveto@handler@finish{%
+  \ifpgf@plot@started%
+
+\pgfpathcurvebetweentimecontinue{0}{0.995}{\pgf@plot@curveto@first}{
+\pgf@plot@curveto@first@support}{\pgf@plot@curveto@second}{
+\pgf@plot@curveto@second}%
+  \fi%
+}
+\makeatother
+
+\makeatletter
+\def\pgf@plot@curveto@handler@finish{%
+  \ifpgf@plot@started%
+
+\pgfpathcurvebetweentimecontinue{0}{0.995}{\pgf@plot@curveto@first}{
+\pgf@plot@curveto@first@support}{\pgf@plot@curveto@second}{
+\pgf@plot@curveto@second}%
+  \fi%
+}
+\makeatother
+
+
+\tikzfading[name=arrowfading, top color=transparent!0, bottom color=transparent!95]
+\tikzset{arrowfill/.style={#1,general shadow={fill=black, shadow yshift=-0.8ex, path fading=arrowfading}}}
+\tikzset{arrowstyle/.style n args={3}{draw=#2,arrowfill={#3}, double arrow,minimum height=#1,double arrow head extend=.3cm}}
+
+\NewDocumentCommand{\tikzfancyarrow}{O{2cm} O{red!50} O{top color=blue!20, bottom color=blue!50} m}{
+\tikz[baseline=-0.5ex]\node [arrowstyle={#1}{#2}{#3}] {#4};
+}
+
+
+\newif\ifcuboidshade
+\newif\ifcuboidemphedge
+
+\tikzset{
+  cuboid/.is family,
+  cuboid,
+  shiftx/.initial=0,
+  shifty/.initial=0,
+  dimx/.initial=3,
+  dimy/.initial=3,
+  dimz/.initial=3,
+  scale/.initial=1,
+  densityx/.initial=1,
+  densityy/.initial=1,
+  densityz/.initial=1,
+  rotation/.initial=0,
+  anglex/.initial=0,
+  angley/.initial=90,
+  anglez/.initial=225,
+  scalex/.initial=1,
+  scaley/.initial=1,
+  scalez/.initial=0.5,
+  front/.style={draw=black,fill=white},
+  top/.style={draw=black,fill=white},
+  right/.style={draw=blue!25!black,fill=blue!25!black},
+  shade/.is if=cuboidshade,
+  shadecolordark/.initial=blue!75!black,
+  shadecolorlight/.initial=blue!50!black,
+  shadeopacity/.initial=0.15,
+  shadesamples/.initial=64,
+  emphedge/.is if=cuboidemphedge,
+  emphstyle/.style={thick},
+  labelcolour/.initial=white,
+  label/.initial="",
+  lx/.initial=0,
+  ly/.initial=0,
+}
+
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+ \AtBeginSubsection[]
+ {
+   \begin{frame}<beamer>
+    \frametitle{Outline}
+  \begin{tikzpicture}
+
+  \end{tikzpicture}
+    \tableofcontents[currentsection,currentsubsection]
+    \addtocounter{framenumber}{-1}
+   \note<+->{.}
+   \end{frame}
+ }
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+% \beamerdefaultoverlayspecification{<+->}
+ 
+% \tikzstyle{blockt} = [rectangle, text width=15em, text centered, minimum 
+% height=2em,inner sep=0pt]
+% \tikzstyle{blockline} = [rectangle, text width=\paperwidth, text centered, 
+% minimum height=2em,inner sep=0pt]
+% \tikzstyle{na} = [baseline=-.5ex]
+ 
+\definecolor{mintedbg}{RGB}{240,248,255}
+\definecolor{mintedobg}{RGB}{125,203,51}
+\definecolor{ichecGreen}{RGB}{125,203,51}
+\definecolor{ichecBlue}{RGB}{11,142,216}
+\newminted{sh}{bgcolor=mintedbg,
+              linenos=true,
+              frame=lines,
+              showspaces=false,
+              fontsize=\tiny
+}
+
+\newminted{fortran}{bgcolor=mintedbg,
+              linenos=false,
+              frame=lines,
+              showspaces=false,
+              fontsize=\tiny,
+              numbersep=0pt,
+              xleftmargin=6pt,
+}
+
+\begin{document}
+% For every picture that defines or uses external nodes, you'll have to
+% apply the 'remember picture' style. To avoid some typing, we'll apply
+% the style to all pictures.
+\tikzstyle{every picture}+=[remember picture,overlay]
+
+%%%% this is practically the first slide... 
+\begin{frame}[plain]
+%\vskip-16.4mm
+ \begin{beamercolorbox}[wd=1.0\paperwidth,colsep=2.5pt]{upper separation line head}
+ \end{beamercolorbox}    
+\begin{beamercolorbox}[wd=1.0\paperwidth,colsep=2.5pt]{}
+\vbox to 10.70mm {%
+ \vfill {\hskip0mm } \vfil%
+}%
+%\hskip-1.75mm\llap{\includegraphics[height=0.9cm]{sfi}\includegraphics[
+% height=0.9cm]{ucdlogo}}
+\hskip-1.75mm\llap{\includegraphics[height=0.9cm]{ichec}}
+\end{beamercolorbox}
+
+\begin{center}
+\begin{beamercolorbox}[wd=1.0\paperwidth,center,ht=13.0mm]{title}
+  \begin{minipage}{0.65\paperwidth}
+   \begin{center}
+    \usebeamerfont{title}\inserttitle
+    \end{center}
+  \end{minipage}
+\end{beamercolorbox}
+
+\begin{beamercolorbox}[wd=\paperwidth,center,ht=11mm]{author}
+   \usebeamerfont{author}\insertauthor
+\end{beamercolorbox}
+
+\begin{beamercolorbox}[wd=\paperwidth,center,ht=7mm]{institute}
+    \usebeamerfont{institute}\insertinstitute
+\end{beamercolorbox}
+
+\begin{beamercolorbox}[wd=\paperwidth,center,ht=9mm]{author}
+\end{beamercolorbox}
+
+\begin{beamercolorbox}[wd=\paperwidth,center,ht=13mm]{date}
+  \usebeamerfont{institute}\insertdate
+\end{beamercolorbox}
+
+\end{center}
+\addtocounter{framenumber}{-1}
+\note<+->{.}
+\end{frame}
+
+\begin{frame}{Outline}
+  \begin{tikzpicture}[]
+  \end{tikzpicture}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\addtocounter{framenumber}{-1}
+\note<+->{.}
+\end{frame}
+% Structuring a talk is a difficult task and the following structure
+% may not be suitable. Here are some rules that apply for this
+% solution: 
+
+% - Exactly two or three sections (other than the summary).
+% - At *most* three subsections per section.
+% - Talk about 30s to 2min per frame. So there should be between about
+%   15 and 30 frames, all told.
+
+% - A conference audience is likely to know very little of what you
+%   are going to talk about. So *simplify*!
+% - In a 20min talk, getting the main ideas across is hard
+%   enough. Leave out details, even if it means being less precise than
+%   you think necessary.
+% - If you omit details that are vital to the proof/implementation,
+%   just say so once. Everybody will be happy with that.
+\section{Definitions}
+\begin{frame}<beamer>                                                                                                                    
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+\end{frame}
+\input{definitions}
+
+
+\section{Extra Material}
+\input{supp}
+
+\end{document}
