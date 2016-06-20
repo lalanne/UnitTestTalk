@@ -7,53 +7,28 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Herramientas, googletest} 
-    \inputminted[mathescape,
-               linenos,
-               numbersep=2pt,
-               frame=lines,
-               bgcolor=White,
-               fontsize=\tiny,
-               linenos,
-               framesep=1mm]{c++}
-               {\MyCode/main.cpp} 
-\end{frame}
-
-\begin{frame}{Biblioteca Stack, sin tests, todo verde} 
-\end{frame}
-
-\begin{frame}{Stack} 
-    \begin{itemize}
-        \item Comportamiento LIFO.
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Incluyendo mi Stack} 
-    \inputminted[mathescape,
-               linenos,
-               numbersep=2pt,
-               frame=lines,
-               bgcolor=White,
-               fontsize=\tiny,
-               linenos,
-               framesep=1mm]{c++}
-               {\MyCode/imports.cpp} 
-\end{frame}
-
 \begin{frame}{Primer Acercamiento} 
     \inputminted[mathescape,
                linenos,
                numbersep=2pt,
                frame=lines,
                bgcolor=White,
-               fontsize=\tiny,
+               fontsize=\small,
                linenos,
                framesep=1mm]{c++}
                {\MyCode/testSkeleton.cpp} 
 \end{frame}
 
 \begin{frame}{Primer Acercamiento, salida} 
+\begin{center}
+\begin{tikzpicture}[]
+\node[] at (0mm,0mm){
+\includegraphics[height=25mm]{\MyFigures/output2.png}\hspace{5mm}
+           };
+        \end{tikzpicture}
+    \end{center}
 \end{frame}
+
 
 \begin{frame}{Primer Acercamiento, implementando} 
     \inputminted[mathescape,
@@ -61,14 +36,12 @@
                numbersep=2pt,
                frame=lines,
                bgcolor=White,
-               fontsize=\tiny,
+               fontsize=\small,
                linenos,
                framesep=1mm]{c++}
                {\MyCode/stack0.cpp} 
 \end{frame}
 
-\begin{frame}{Primer Acercamiento, salida} 
-\end{frame}
 
 \begin{frame}{Creando el primer exito} 
     \inputminted[mathescape,
@@ -83,6 +56,13 @@
 \end{frame}
 
 \begin{frame}{Creando el primer exito, salida} 
+\begin{center}
+\begin{tikzpicture}[]
+\node[] at (0mm,0mm){
+\includegraphics[height=40mm]{\MyFigures/output3.png}\hspace{5mm}
+           };
+        \end{tikzpicture}
+    \end{center}
 \end{frame}
 
 \begin{frame}{Algo util} 
@@ -98,6 +78,13 @@
 \end{frame}
 
 \begin{frame}{Algo util, salida} 
+\begin{center}
+\begin{tikzpicture}[]
+\node[] at (0mm,0mm){
+\includegraphics[height=40mm]{\MyFigures/output4.png}\hspace{5mm}
+           };
+        \end{tikzpicture}
+    \end{center}
 \end{frame}
 
 \begin{frame}{Tomando Forma} 
@@ -113,6 +100,13 @@
 \end{frame}
 
 \begin{frame}{Tomando Forma, salida} 
+\begin{center}
+\begin{tikzpicture}[]
+\node[] at (0mm,0mm){
+\includegraphics[height=60mm]{\MyFigures/output5.png}\hspace{5mm}
+           };
+        \end{tikzpicture}
+    \end{center}
 \end{frame}
 
 \begin{frame}{Biblioteca Stack} 
@@ -133,7 +127,14 @@
                {\MyCode/emptyStackTest.cpp} 
 \end{frame}
 
-\begin{frame}{POP de un stack vacio, salida} 
+\begin{frame}{pasando, salida} 
+\begin{center}
+\begin{tikzpicture}[]
+\node[] at (0mm,0mm){
+\includegraphics[height=20mm]{\MyFigures/output6.png}\hspace{5mm}
+           };
+        \end{tikzpicture}
+    \end{center}
 \end{frame}
 
 \begin{frame}{POP de un stack vacio, implementacion} 
@@ -149,6 +150,13 @@
 \end{frame}
 
 \begin{frame}{POP de un stack vacio, salida} 
+\begin{center}
+\begin{tikzpicture}[]
+\node[] at (0mm,0mm){
+\includegraphics[height=15mm]{\MyFigures/output7.png}\hspace{5mm}
+           };
+        \end{tikzpicture}
+    \end{center}
 \end{frame}
 
 \begin{frame}{POP de un stack vacio, implementacion stack} 
@@ -164,6 +172,13 @@
 \end{frame}
 
 \begin{frame}{POP de un stack vacio, salida} 
+\begin{center}
+\begin{tikzpicture}[]
+\node[] at (0mm,0mm){
+\includegraphics[height=40mm]{\MyFigures/output8.png}\hspace{5mm}
+           };
+        \end{tikzpicture}
+    \end{center}
 \end{frame}
 
 \begin{frame}{Mas casos de borde} 
@@ -185,6 +200,13 @@
 \end{frame}
 
 \begin{frame}{Tamano configurable, salida} 
+\begin{center}
+\begin{tikzpicture}[]
+\node[] at (0mm,0mm){
+\includegraphics[height=40mm]{\MyFigures/output9.png}\hspace{5mm}
+           };
+        \end{tikzpicture}
+    \end{center}
 \end{frame}
 
 \begin{frame}{Tamano configurable, implementacion} 
@@ -200,6 +222,13 @@
 \end{frame}
 
 \begin{frame}{Tamano configurable, salida} 
+\begin{center}
+\begin{tikzpicture}[]
+\node[] at (0mm,0mm){
+\includegraphics[height=20mm]{\MyFigures/output10.png}\hspace{5mm}
+           };
+        \end{tikzpicture}
+    \end{center}
 \end{frame}
 
 \begin{frame}{Excede limite de tamano} 
@@ -227,6 +256,13 @@
 \end{frame}
 
 \begin{frame}{Importo codigo, salida} 
+\begin{center}
+\begin{tikzpicture}[]
+\node[] at (0mm,0mm){
+\includegraphics[height=20mm]{\MyFigures/output11.png}\hspace{5mm}
+           };
+        \end{tikzpicture}
+    \end{center}
 \end{frame}
 
 \begin{frame}{Codigo final} 
@@ -242,6 +278,23 @@
 \end{frame}
 
 \begin{frame}{Codigo final, salida} 
+\begin{center}
+\begin{tikzpicture}[]
+\node[] at (0mm,0mm){
+\includegraphics[height=40mm]{\MyFigures/output12.png}\hspace{5mm}
+           };
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Codigo final, salida} 
+\begin{center}
+\begin{tikzpicture}[]
+\node[] at (0mm,0mm){
+\includegraphics[height=40mm]{\MyFigures/output13.png}\hspace{5mm}
+           };
+        \end{tikzpicture}
+    \end{center}
 \end{frame}
 
 \begin{frame}{Todos los tests} 
@@ -256,15 +309,15 @@
                {\MyCode/allTests.cpp} 
 \end{frame}
 
-%\begin{frame}{Ciclo TDD}
-%\begin{center}
-%\begin{tikzpicture}[]
-%\node[] at (0mm,0mm){
-%\includegraphics[height=40mm]{\MyFigures/tddCycle.png}\hspace{5mm}
-            %};
-        %\end{tikzpicture}
-    %\end{center}
-%\end{frame}
+\begin{frame}{Ciclo TDD}
+\begin{center}
+\begin{tikzpicture}[]
+\node[] at (0mm,0mm){
+\includegraphics[height=40mm]{\MyFigures/tddCycle.png}\hspace{5mm}
+           };
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
 
 \begin{frame}{Test Driven Development} 
     \begin{itemize}
