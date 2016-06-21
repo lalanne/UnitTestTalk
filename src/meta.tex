@@ -38,15 +38,15 @@
 
 %\setbeameroption{show notes on second screen=right}
 \graphicspath{{figures/}}
-\newcommand*{\MyCode}{/home/lalanne/PersonalProjects/UnitTestTalk/src/code}
-\newcommand*{\MyFigures}{/home/lalanne/PersonalProjects/UnitTestTalk/figures}
+\newcommand*{\MyCode}{/home/elf/PersonalProjects/UnitTestTalk/src/code}
+\newcommand*{\MyFigures}{/home/elf/PersonalProjects/UnitTestTalk/figures}
 
 %\setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{sidebar right}{}% or get rid of navigation entries there somehow from the default position... 
 %\setbeameroption{show notes on second screen}
 \newcommand{\captionfont}{\footnotesize}
-\title[Test Driven Development(TDD)]
-{Test Driven Development(TDD)}
+\title[Test Driven Development(TDD) / Unit Tests]
+{Test Driven Development(TDD) / Unit Tests}
 \author[Christian Lalanne \emph{et. al}] % (optional, use only with lots of authors)
 {\textcolor{CherryRed}{Christian Lalanne}}
 % - Give the names in the same order as the appear in the paper.
@@ -257,6 +257,13 @@
 %   you think necessary.
 % - If you omit details that are vital to the proof/implementation,
 %   just say so once. Everybody will be happy with that.
+\section{Objetivos}
+\begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+\end{frame}
+\input{objectives}
+
 \section{Unit Testing}
 \begin{frame}<beamer>
     \frametitle{Outline}
@@ -277,5 +284,19 @@
     \tableofcontents[currentsection]
 \end{frame}
 \input{tddExample}
+
+\section{Futuras discusiones}
+\begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+\end{frame}
+\input{future}
+
+\section{Preguntas}
+\begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+\end{frame}
+\input{destruir}
 
 \end{document}

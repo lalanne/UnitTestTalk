@@ -18,7 +18,7 @@ SET(LATEX_OUTPUT_PATH bin)
 SET(CMAKE_CURRENT_SOURCE_DIR src)
 
 ADD_LATEX_DOCUMENT(meta.tex
-                INPUTS unitTesting.tex tdd.tex tddExample.tex
+                INPUTS objectives.tex unitTesting.tex tdd.tex tddExample.tex future.tex destruir.tex
                 IMAGE_DIRS figures
                 PGF_DIRS figures
                 DEFAULT_PDF
