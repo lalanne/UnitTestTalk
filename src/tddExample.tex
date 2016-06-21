@@ -2,12 +2,12 @@
 
 \begin{frame}{Requerimientos de biblioteca de Stack} 
     \begin{itemize}
-        \item Protocolo LIFO
+        \item Protocolo LIFO (El primero que entra es el primero que sale)
         \item El tamano de el stack debe ser configurable por el usuario
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Primer Acercamiento} 
+\begin{frame}{Primer unit test} 
     \inputminted[mathescape,
                linenos,
                numbersep=2pt,
@@ -19,7 +19,7 @@
                {\MyCode/testSkeleton.cpp} 
 \end{frame}
 
-\begin{frame}{Primer Acercamiento, salida} 
+\begin{frame}{Primer unit test, salida} 
 \begin{center}
 \begin{tikzpicture}[]
 \node[] at (0mm,0mm){
@@ -30,7 +30,7 @@
 \end{frame}
 
 
-\begin{frame}{Primer Acercamiento, implementando} 
+\begin{frame}{Primer unit test, implementacion} 
     \inputminted[mathescape,
                linenos,
                numbersep=2pt,
@@ -42,6 +42,16 @@
                {\MyCode/stack0.cpp} 
 \end{frame}
 
+\begin{frame}{Casi Casi, salida} 
+\begin{center}
+\begin{tikzpicture}[]
+\node[] at (0mm,0mm){
+\includegraphics[height=55mm]{\MyFigures/output3.png}\hspace{5mm}
+           };
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
 
 \begin{frame}{Creando el primer exito} 
     \inputminted[mathescape,
@@ -49,7 +59,7 @@
                numbersep=2pt,
                frame=lines,
                bgcolor=White,
-               fontsize=\tiny,
+               fontsize=\small,
                linenos,
                framesep=1mm]{c++}
                {\MyCode/stack1.cpp} 
@@ -59,7 +69,7 @@
 \begin{center}
 \begin{tikzpicture}[]
 \node[] at (0mm,0mm){
-\includegraphics[height=40mm]{\MyFigures/output3.png}\hspace{5mm}
+\includegraphics[height=60mm]{\MyFigures/output4.png}\hspace{5mm}
            };
         \end{tikzpicture}
     \end{center}
@@ -71,7 +81,7 @@
                numbersep=2pt,
                frame=lines,
                bgcolor=White,
-               fontsize=\tiny,
+               fontsize=\small,
                linenos,
                framesep=1mm]{c++}
                {\MyCode/test1.cpp} 
@@ -81,29 +91,30 @@
 \begin{center}
 \begin{tikzpicture}[]
 \node[] at (0mm,0mm){
-\includegraphics[height=40mm]{\MyFigures/output4.png}\hspace{5mm}
+\includegraphics[height=60mm]{\MyFigures/output5.png}\hspace{5mm}
            };
         \end{tikzpicture}
     \end{center}
 \end{frame}
 
-\begin{frame}{Tomando Forma} 
+
+\begin{frame}{Algo util, camino al exito} 
     \inputminted[mathescape,
                linenos,
                numbersep=2pt,
                frame=lines,
                bgcolor=White,
-               fontsize=\tiny,
+               fontsize=\small,
                linenos,
                framesep=1mm]{c++}
                {\MyCode/stack2.cpp} 
 \end{frame}
 
-\begin{frame}{Tomando Forma, salida} 
+\begin{frame}{Algo util, salida} 
 \begin{center}
 \begin{tikzpicture}[]
 \node[] at (0mm,0mm){
-\includegraphics[height=60mm]{\MyFigures/output5.png}\hspace{5mm}
+\includegraphics[height=50mm]{\MyFigures/output6.png}\hspace{5mm}
            };
         \end{tikzpicture}
     \end{center}
@@ -121,21 +132,22 @@
                numbersep=2pt,
                frame=lines,
                bgcolor=White,
-               fontsize=\tiny,
+               fontsize=\small,
                linenos,
                framesep=1mm]{c++}
                {\MyCode/emptyStackTest.cpp} 
 \end{frame}
 
-\begin{frame}{pasando, salida} 
+\begin{frame}{POP de un stack vacio, salida} 
 \begin{center}
 \begin{tikzpicture}[]
 \node[] at (0mm,0mm){
-\includegraphics[height=20mm]{\MyFigures/output6.png}\hspace{5mm}
+\includegraphics[height=20mm]{\MyFigures/output7.png}\hspace{5mm}
            };
         \end{tikzpicture}
     \end{center}
 \end{frame}
+
 
 \begin{frame}{POP de un stack vacio, implementacion} 
     \inputminted[mathescape,
@@ -143,7 +155,7 @@
                numbersep=2pt,
                frame=lines,
                bgcolor=White,
-               fontsize=\tiny,
+               fontsize=\small,
                linenos,
                framesep=1mm]{c++}
                {\MyCode/EmptyStackException.cpp} 
@@ -153,7 +165,7 @@
 \begin{center}
 \begin{tikzpicture}[]
 \node[] at (0mm,0mm){
-\includegraphics[height=15mm]{\MyFigures/output7.png}\hspace{5mm}
+\includegraphics[height=35mm]{\MyFigures/output8.png}\hspace{5mm}
            };
         \end{tikzpicture}
     \end{center}
@@ -165,7 +177,7 @@
                numbersep=2pt,
                frame=lines,
                bgcolor=White,
-               fontsize=\tiny,
+               fontsize=\small,
                linenos,
                framesep=1mm]{c++}
                {\MyCode/stack3.cpp} 
@@ -175,11 +187,12 @@
 \begin{center}
 \begin{tikzpicture}[]
 \node[] at (0mm,0mm){
-\includegraphics[height=40mm]{\MyFigures/output8.png}\hspace{5mm}
+\includegraphics[height=50mm]{\MyFigures/output9.png}\hspace{5mm}
            };
         \end{tikzpicture}
     \end{center}
 \end{frame}
+
 
 \begin{frame}{Mas casos de borde} 
     \begin{itemize}
@@ -193,7 +206,7 @@
                numbersep=2pt,
                frame=lines,
                bgcolor=White,
-               fontsize=\tiny,
+               fontsize=\small,
                linenos,
                framesep=1mm]{c++}
                {\MyCode/configurableSizeTest.cpp} 
@@ -203,7 +216,7 @@
 \begin{center}
 \begin{tikzpicture}[]
 \node[] at (0mm,0mm){
-\includegraphics[height=40mm]{\MyFigures/output9.png}\hspace{5mm}
+\includegraphics[height=22mm]{\MyFigures/output10.png}\hspace{5mm}
            };
         \end{tikzpicture}
     \end{center}
@@ -221,11 +234,11 @@
                {\MyCode/stack4.cpp} 
 \end{frame}
 
-\begin{frame}{Tamano configurable, salida} 
+\begin{frame}{Tamano Configurable, salida} 
 \begin{center}
 \begin{tikzpicture}[]
 \node[] at (0mm,0mm){
-\includegraphics[height=20mm]{\MyFigures/output10.png}\hspace{5mm}
+\includegraphics[height=20mm]{\MyFigures/output11.png}\hspace{5mm}
            };
         \end{tikzpicture}
     \end{center}
@@ -237,29 +250,17 @@
                numbersep=2pt,
                frame=lines,
                bgcolor=White,
-               fontsize=\tiny,
+               fontsize=\small,
                linenos,
                framesep=1mm]{c++}
                {\MyCode/ExceedsStackSizeException.cpp} 
 \end{frame}
 
-\begin{frame}{Importo codigo} 
-    \inputminted[mathescape,
-               linenos,
-               numbersep=2pt,
-               frame=lines,
-               bgcolor=White,
-               fontsize=\tiny,
-               linenos,
-               framesep=1mm]{c++}
-               {\MyCode/finalImports.hpp} 
-\end{frame}
-
-\begin{frame}{Importo codigo, salida} 
+\begin{frame}{Tamano Configurable, salida} 
 \begin{center}
 \begin{tikzpicture}[]
 \node[] at (0mm,0mm){
-\includegraphics[height=20mm]{\MyFigures/output11.png}\hspace{5mm}
+\includegraphics[height=50mm]{\MyFigures/output12.png}\hspace{5mm}
            };
         \end{tikzpicture}
     \end{center}
@@ -281,17 +282,7 @@
 \begin{center}
 \begin{tikzpicture}[]
 \node[] at (0mm,0mm){
-\includegraphics[height=40mm]{\MyFigures/output12.png}\hspace{5mm}
-           };
-        \end{tikzpicture}
-    \end{center}
-\end{frame}
-
-\begin{frame}{Codigo final, salida} 
-\begin{center}
-\begin{tikzpicture}[]
-\node[] at (0mm,0mm){
-\includegraphics[height=40mm]{\MyFigures/output13.png}\hspace{5mm}
+\includegraphics[height=50mm]{\MyFigures/output13.png}\hspace{5mm}
            };
         \end{tikzpicture}
     \end{center}
@@ -327,12 +318,46 @@
     \end{itemize}
 \end{frame}
 
+
+\begin{frame}{Test Driven Development} 
+    \begin{itemize}
+        \item TDD nos da retroalimentacion de:
+        \begin{itemize}
+            \item El codigo esta funcionando?
+            \item El codigo esta bien disenado?
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Test Driven Development} 
+    \begin{itemize}
+        \item Escribir los tests nos da:
+        \begin{itemize}
+            \item Clarificar el criterio de aceptacion de nuestra proxima unidad de codigo
+            \item Alta cohesion y bajo aclopamiento, para probar unidades de forma facil
+            \item Descripcion ejecutable de lo que el codigo hace
+            \item Unit tests
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Test Driven Development} 
+    \begin{itemize}
+        \item Ejecutar los tests nos da:
+        \begin{itemize}
+            \item Detectar errores cuando el conocimiento de el contexto esta en mente aun fresco
+            \item Nos deja saber cuando estamos listos, evita sobre implementar/sobre generalizar features
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{Test Driven Development} 
     \begin{itemize}
         \item Esto trae consigo desarrollo de software incremental e iterativo
-        \item El codigo final generalmente esta bien disenado y 
-            \textcolor{red}{tiene tests unitarios!!!!}
-        \item No es la respuesta a todos los problemas en desarrollo de software, pero
-            definitivamente una mejor al hack, hack, hack and fix
+    \end{itemize}
+    \begin{itemize}
+        \item Nunca escribir una nueva funcionalidad sin primer tener un test que falle
     \end{itemize}
 \end{frame}
+
+

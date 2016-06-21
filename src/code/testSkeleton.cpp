@@ -1,4 +1,7 @@
 
+#include "Stack.hpp"
+...
+
 TEST(stack_tests, lifo_behaviour_with_1_element) {
     Stack<float> stack;
 
